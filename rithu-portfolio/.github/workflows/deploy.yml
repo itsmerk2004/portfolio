@@ -32,12 +32,13 @@ jobs:
         uses: actions/setup-node@v7
         with:
           node-version: lts/*
-          cache: npm
 
       - name: Install dependencies
+        working-directory: ./rithu-portfolio
         run: npm ci
 
       - name: Build
+        working-directory: ./rithu-portfolio
         run: npm run build
 
       - name: Setup Pages
@@ -46,7 +47,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
-          path: ./dist
+          path: ./rithu-portfolio/dist
 
       - name: Deploy to GitHub Pages
         id: deployment
