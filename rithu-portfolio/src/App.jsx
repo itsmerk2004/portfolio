@@ -1,51 +1,122 @@
+import { useState } from "react";
 import profileImage from "./assets/profile.jpg";
 function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
   return (
     <div className="min-h-screen bg-[#fafafa] text-neutral-900">
       {/* Navbar */}
-      <header className="sticky top-0 z-50 border-b border-neutral-200/80 bg-[#fafafa]/90 backdrop-blur-md">
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-          <a
-            href="#home"
-            className="text-lg font-semibold tracking-tight"
-          >
-            Rithu Krishna
-          </a>
+      {/* Navbar */}
+<header className="sticky top-0 z-50 border-b border-neutral-200/80 bg-[#fafafa]/90 backdrop-blur-md">
+  <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
+    <a
+      href="#home"
+      className="text-lg font-semibold tracking-tight"
+      onClick={() => setMenuOpen(false)}
+    >
+      Rithu Krishna
+    </a>
 
-          <div className="hidden items-center gap-8 text-sm text-neutral-600 md:flex">
-            <a href="#home" className="transition hover:text-neutral-900">
-              Home
-            </a>
+    {/* Desktop Navigation */}
+    <div className="hidden items-center gap-8 text-sm text-neutral-600 md:flex">
+      <a href="#home" className="transition hover:text-neutral-900">
+        Home
+      </a>
 
-            <a href="#about" className="transition hover:text-neutral-900">
-              About
-            </a>
+      <a href="#about" className="transition hover:text-neutral-900">
+        About
+      </a>
 
-            <a href="#skills" className="transition hover:text-neutral-900">
-              Skills
-            </a>
+      <a href="#skills" className="transition hover:text-neutral-900">
+        Skills
+      </a>
 
-            <a href="#projects" className="transition hover:text-neutral-900">
-              Projects
-            </a>
+      <a href="#projects" className="transition hover:text-neutral-900">
+        Projects
+      </a>
 
-            <a href="#education" className="transition hover:text-neutral-900">
-              Education
-            </a>
+      <a href="#education" className="transition hover:text-neutral-900">
+        Education
+      </a>
 
-            <a href="#contact" className="transition hover:text-neutral-900">
-              Contact
-            </a>
-          </div>
+      <a href="#contact" className="transition hover:text-neutral-900">
+        Contact
+      </a>
+    </div>
 
-          <a
-            href="#contact"
-            className="hidden rounded-full border border-neutral-300 px-4 py-2 text-sm font-medium transition hover:bg-neutral-900 hover:text-white sm:block"
-          >
-            Contact Me
-          </a>
-        </nav>
-      </header>
+    {/* Desktop Contact Button */}
+    <a
+      href="#contact"
+      className="hidden rounded-full border border-neutral-300 px-4 py-2 text-sm font-medium transition hover:bg-neutral-900 hover:text-white sm:block"
+    >
+      Contact Me
+    </a>
+
+    {/* Mobile Menu Button */}
+    <button
+      type="button"
+      onClick={() => setMenuOpen(!menuOpen)}
+      className="rounded-lg border border-neutral-300 px-3 py-2 text-xl md:hidden"
+      aria-label="Toggle navigation menu"
+    >
+      {menuOpen ? "✕" : "☰"}
+    </button>
+  </nav>
+
+  {/* Mobile Navigation */}
+  {menuOpen && (
+    <div className="border-t border-neutral-200 bg-[#fafafa] px-4 py-4 md:hidden">
+      <div className="flex flex-col gap-1 text-sm text-neutral-700">
+        <a
+          href="#home"
+          onClick={() => setMenuOpen(false)}
+          className="rounded-lg px-3 py-3 hover:bg-neutral-100"
+        >
+          Home
+        </a>
+
+        <a
+          href="#about"
+          onClick={() => setMenuOpen(false)}
+          className="rounded-lg px-3 py-3 hover:bg-neutral-100"
+        >
+          About
+        </a>
+
+        <a
+          href="#skills"
+          onClick={() => setMenuOpen(false)}
+          className="rounded-lg px-3 py-3 hover:bg-neutral-100"
+        >
+          Skills
+        </a>
+
+        <a
+          href="#projects"
+          onClick={() => setMenuOpen(false)}
+          className="rounded-lg px-3 py-3 hover:bg-neutral-100"
+        >
+          Projects
+        </a>
+
+        <a
+          href="#education"
+          onClick={() => setMenuOpen(false)}
+          className="rounded-lg px-3 py-3 hover:bg-neutral-100"
+        >
+          Education
+        </a>
+
+        <a
+          href="#contact"
+          onClick={() => setMenuOpen(false)}
+          className="rounded-lg px-3 py-3 hover:bg-neutral-100"
+        >
+          Contact
+        </a>
+      </div>
+    </div>
+  )}
+</header>
 
       {/* Hero Section */}
       <main>
@@ -61,11 +132,11 @@ function App() {
                 Hello, I'm
               </p>
 
-              <h1 className="max-w-4xl text-5xl font-semibold leading-[0.98] tracking-[-0.03em] sm:text-6xl lg:text-5xl">
+              <h1 className="max-w-4xl text-4xl font-semibold leading-[0.98] tracking-[-0.03em] sm:text-6xl lg:text-5xl">
                 Rithu Krishna
               </h1>
 
-              <h2 className="mt-5 max-w-2xl text-2xl font-medium leading-tight tracking-tight text-neutral-700 sm:text-3xl">
+              <h2 className="mt-5 max-w-2xl text-xl font-medium leading-tight tracking-tight text-neutral-700 sm:text-3xl">
                 Aspiring Data Analyst & Data Science Professional
               </h2>
 
@@ -113,13 +184,13 @@ function App() {
             </div>
 
             {/* Minimal Profile Card */}
-            <div className="hidden lg:block">
+           <div className="block w-full">
               <div className="rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
                 <img
-                      src={profileImage}
-                      alt="Rithu Krishna"
-                      className="aspect-square w-full rounded-2xl object-cover"
-                    />
+                     src={profileImage}
+                     alt="Rithu Krishna"
+                      className="block h-auto w-full rounded-2xl object-cover"
+                  />
 
                 <div className="mt-6">
                   <p className="text-sm text-neutral-500">
@@ -136,7 +207,7 @@ function App() {
           </div>
         </section>
                 {/* About Section */}
-        <section id="about" className="border-t border-neutral-200 px-6 py-24 sm:px-8">
+        <section id="about" className="border-t border-neutral-200 px-6 py-16 sm:px-8 sm:py-24">
           <div className="mx-auto max-w-6xl">
             <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr]">
 
@@ -212,7 +283,7 @@ function App() {
         {/* Skills Section */}
         <section
           id="skills"
-          className="border-t border-neutral-200 px-6 py-24"
+          className="border-t border-neutral-200 px-6 py-16 sm:py-24"
         >
           <div className="mx-auto max-w-6xl">
 
@@ -339,7 +410,7 @@ function App() {
         {/* Projects Section */}
         <section
           id="projects"
-          className="border-t border-neutral-200 px-6 py-24"
+          className="border-t border-neutral-200 px-6 py-16 sm:py-24"
         >
           <div className="mx-auto max-w-6xl">
 
@@ -559,7 +630,7 @@ function App() {
         id="contact"
         className="border-t border-neutral-200 bg-white"
       >
-        <div className="mx-auto max-w-6xl px-6 py-24 sm:px-8">
+       <div className="mx-auto max-w-6xl px-6 py-16 sm:px-8 sm:py-24">
           <div className="max-w-2xl">
             <p className="text-sm font-medium uppercase tracking-wider text-neutral-500">
               Contact
